@@ -1,0 +1,29 @@
+# Python virtual environment
+da370p/
+.venv/
+__pycache__/
+*.py[cod]
+*.pyo
+*.egg-info/
+dist/
+build/
+
+# Environment secrets — NEVER commit this
+.env
+
+# Downloaded datasets (can be very large)
+data/
+
+# Kaggle credentials cache
+.kaggle/
+
+# PyTorch model cache
+.cache/
+
+# OS artefacts
+.DS_Store
+Thumbs.db
+
+
+# project walkthrough
+project_walkthrough.md

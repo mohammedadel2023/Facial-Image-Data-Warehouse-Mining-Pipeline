@@ -1,0 +1,37 @@
+# ============================================================
+# requirements.txt
+# Data Warehouse & Data Mining Pipeline
+# Python 3.11.5 (matches project venv)
+# ============================================================
+
+# --- Infrastructure & Database ---
+psycopg2-binary==2.9.9          # PostgreSQL adapter (binary wheel, no libpq needed)
+pgvector==0.3.2                 # pgvector psycopg2 type adapter
+python-dotenv==1.0.1            # .env file loading
+
+# --- Data Ingestion ---
+kagglehub==1.0.0                # Official Kaggle dataset downloader
+
+# --- Image Processing ---
+opencv-python==4.10.0.84        # cv2: image loading, resizing, colour conversion
+numpy==1.26.4                   # Array operations (pinned for torch compatibility)
+
+# --- Deep Learning (Feature Extraction) ---
+# IMPORTANT: Install with the PyTorch CUDA 11.8 index URL, NOT plain pip install:
+#   pip install torch==2.3.1+cu118 torchvision==0.18.1+cu118 --index-url https://download.pytorch.org/whl/cu118
+# The cu118 build supports RTX 3050 / any Ampere GPU with CUDA 11.8 drivers.
+torch==2.3.1+cu118              # PyTorch with CUDA 11.8 support
+torchvision==0.18.1+cu118       # torchvision matching torch build
+
+# --- Data Validation ---
+pydantic==2.7.4                 # Schema validation (v2 API used in schemas.py)
+
+# --- Data Mining & Analysis ---
+pandas==2.2.2                   # DataFrame for ML stub queries
+scikit-learn==1.5.0             # Optional: use for benchmarking your custom K-Means
+
+# --- Presentation Layer ---
+streamlit==1.36.0               # Dashboard / visualisation UI
+
+# --- Utilities ---
+tqdm==4.66.4                    # Progress bars for batch processing
