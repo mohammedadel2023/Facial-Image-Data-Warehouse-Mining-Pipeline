@@ -25,10 +25,6 @@ CelebA (attributes) ──┘
 
 By keeping both in **one fact table** (with nullable foreign keys for the heterogeneous fields), we can run a single K-Means pass over the entire combined feature space and discover clusters that span emotion and appearance — something neither dataset reveals alone.
 
-### Why build K-Means and Apriori by hand?
-
-The ML algorithms are **intentionally left as stubs** (`data_mining.py`). The pipeline is the scaffolding; you write the math. This forces a deep understanding of centroid initialisation, convergence, support/confidence/lift — instead of calling `sklearn.cluster.KMeans()` and moving on.
-
 ---
 
 ## Architecture
@@ -91,7 +87,7 @@ The ML algorithms are **intentionally left as stubs** (`data_mining.py`). The pi
 | GPU acceleration | CUDA 11.8 (RTX 3050 / any Ampere GPU) |
 | Data validation | Pydantic v2 |
 | DB driver | psycopg2 |
-| ML stub | pandas + NumPy (your math goes here) |
+| ML stub | pandas + NumPy |
 | Presentation | Streamlit *(planned)* |
 
 ---
@@ -113,18 +109,18 @@ Install these before starting:
 ### Step 1 — Clone the repository
 
 ```powershell
-git clone <your-repo-url>
-cd "Da 370P"
+git clone <git@github.com:mohammedadel2023/Facial-Image-Data-Warehouse-Mining-Pipeline.git>
+cd "Facial-Image-Data-Warehouse-Mining-Pipeline"
 ```
 
 ### Step 2 — Create and activate the virtual environment
 
 ```powershell
-python -m venv da370p
-da370p\Scripts\activate
+python -m venv venv
+venv\Scripts\activate
 ```
 
-You should see `(da370p)` at the start of your terminal prompt.
+You should see `(venv)` at the start of your terminal prompt.
 
 ### Step 3 — Install dependencies
 
@@ -134,7 +130,7 @@ You should see `(da370p)` at the start of your terminal prompt.
 # Install everything except torch first
 pip install -r requirements.txt
 
-# Then reinstall torch with CUDA 11.8 support (RTX 3050 / Ampere GPUs)
+# Then reinstall torch with CUDA 11.8
 pip install torch==2.3.1+cu118 torchvision==0.18.1+cu118 --index-url https://download.pytorch.org/whl/cu118
 ```
 
@@ -158,14 +154,7 @@ KAGGLE_KEY=your_api_key
 POSTGRES_PASSWORD=your_secure_password
 ```
 
-### Step 5 — Accept Kaggle dataset terms
-
-Both datasets require you to accept their terms on Kaggle before downloading:
-
-1. Go to [kaggle.com/datasets/msambare/fer2013](https://www.kaggle.com/datasets/msambare/fer2013) → click **Download** and accept
-2. Go to [kaggle.com/datasets/jessicali9530/celeba-dataset](https://www.kaggle.com/datasets/jessicali9530/celeba-dataset) → click **Download** and accept
-
-### Step 6 — Start the database
+### Step 5 — Start the database
 
 ```powershell
 docker compose up -d
@@ -277,9 +266,8 @@ docker exec -it dw_postgres psql -U dw_user -d datawarehouse -c "
 
 ---
 
-## Data Mining (Your Turn)
+## Data Mining (planned)
 
-Open `data_mining.py`. The database plumbing is done — your job is to fill in the math.
 
 ### Step 1 — Load the data
 
@@ -346,9 +334,6 @@ You have the CPU build. Reinstall:
 ```powershell
 pip install torch==2.3.1+cu118 torchvision==0.18.1+cu118 --index-url https://download.pytorch.org/whl/cu118
 ```
-
-### `403 Forbidden` when downloading datasets
-You haven't accepted the dataset terms on Kaggle. Visit the dataset pages and click Download/Accept.
 
 ### `could not connect to server` (psycopg2)
 The Docker container isn't running. Run `docker compose up -d` and wait for status `healthy`.
