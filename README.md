@@ -116,7 +116,7 @@ cd "Facial-Image-Data-Warehouse-Mining-Pipeline"
 ### Step 2 — Create and activate the virtual environment
 
 ```powershell
-python -m venv venv
+python -m venv venv  #ensure that the python version ==3.11
 venv\Scripts\activate
 ```
 
