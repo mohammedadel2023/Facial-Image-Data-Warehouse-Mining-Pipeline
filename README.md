@@ -109,7 +109,7 @@ Install these before starting:
 ### Step 1 — Clone the repository
 
 ```powershell
-git clone <git@github.com:mohammedadel2023/Facial-Image-Data-Warehouse-Mining-Pipeline.git>
+git clone git@github.com:mohammedadel2023/Facial-Image-Data-Warehouse-Mining-Pipeline.git
 cd "Facial-Image-Data-Warehouse-Mining-Pipeline"
 ```
 
